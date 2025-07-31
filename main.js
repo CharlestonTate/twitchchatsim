@@ -2,7 +2,7 @@ class TwitchChatSimulator {
     constructor() {
         this.usernames = [];
         this.messages = [];
-        this.isRunning = false;
+        this.isRunning = true; // Start automatically
         this.intervalId = null;
         this.messageCount = 0;
         this.currentSpeed = 1500;
@@ -20,8 +20,7 @@ class TwitchChatSimulator {
         this.chatMessages = document.getElementById('chatMessages');
         this.speedSlider = document.getElementById('speedSlider');
         this.speedValue = document.getElementById('speedValue');
-        this.startBtn = document.getElementById('startBtn');
-        this.stopBtn = document.getElementById('stopBtn');
+        this.toggleBtn = document.getElementById('toggleBtn');
         this.clearBtn = document.getElementById('clearBtn');
         this.messageCounter = document.getElementById('messageCounter');
         this.messageType = document.getElementById('messageType');
@@ -191,12 +190,8 @@ class TwitchChatSimulator {
             }
         });
 
-        this.startBtn.addEventListener('click', () => {
-            this.startChat();
-        });
-
-        this.stopBtn.addEventListener('click', () => {
-            this.stopChat();
+        this.toggleBtn.addEventListener('click', () => {
+            this.toggleChat();
         });
 
         this.clearBtn.addEventListener('click', () => {
@@ -214,12 +209,19 @@ class TwitchChatSimulator {
         });
     }
 
+    toggleChat() {
+        if (this.isRunning) {
+            this.stopChat();
+        } else {
+            this.startChat();
+        }
+    }
+
     startChat() {
         if (this.isRunning) return;
         
         this.isRunning = true;
-        this.startBtn.disabled = true;
-        this.stopBtn.disabled = false;
+        this.toggleBtn.textContent = 'Stop Chat';
         this.updateViewerCount();
         
         // Schedule first message
@@ -230,8 +232,7 @@ class TwitchChatSimulator {
         if (!this.isRunning) return;
         
         this.isRunning = false;
-        this.startBtn.disabled = false;
-        this.stopBtn.disabled = true;
+        this.toggleBtn.textContent = 'Start Chat';
         this.updateViewerCount();
         
         if (this.intervalId) {
@@ -473,5 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add some initial messages after data is loaded
     setTimeout(() => {
         simulator.addInitialMessages();
+        // Start the chat automatically
+        simulator.startChat();
     }, 1000);
 });
