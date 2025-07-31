@@ -289,6 +289,26 @@ body {
     border-color: #9147ff;
 }
 
+.github-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #efeff1;
+    background-color: #9147ff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    gap: 6px;
+}
+
+.github-link:hover {
+    background-color: #a970ff;
+    color: white;
+}
+
 #speedValue {
     color: #efeff1;
     font-size: 12px;
