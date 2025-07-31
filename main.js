@@ -59,8 +59,17 @@ class TwitchChatSimulator {
             'clockzone', 'timerplay', 'framecast', 'tickzone', 'stepplay', 'movecast', 'turnzone', 'shiftplay', 'rotatecast', 'Nightbot'
         ];
 
-        // All messages from messages.txt
+        // All messages from messages.txt + frequent W's and L's
         this.allMessages = [
+            // Frequent W's and L's added to normal messages
+            'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W',
+            'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW',
+            'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW',
+            'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L',
+            'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL',
+            'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL',
+            
+            // Original messages from messages.txt
             'yo this game actually looks sick', 'wait how did you do that??', 'that was clean af', 'dude you\'re cracked',
             'been watching for 10 mins and I\'m already hooked', 'lol the timing on that', 'bruh no way', 'lowkey that was kinda smart',
             'just got here, what\'d I miss?', 'bro\'s cooking tonight fr', 'this part always stresses me out', 'why is this so intense lol',
@@ -110,11 +119,29 @@ class TwitchChatSimulator {
             'bat shit', 'insane', 'jittliang', 'fuhlutugans'
         ];
 
-        // Simple messages (W's, LETS GOOO, L's)
+        // Simple messages (W's, LETS GOOO, L's) - with increased frequency for W and L
         this.simpleMessages = [
-            'W', 'WW', 'WWW', 'WWWW', 'WWWWW', 'WWWWWW', 'WWWWWWW', 'WWWWWWWW', 'WWWWWWWWW', 'WWWWWWWWWW',
+            // W's - more frequent
+            'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W',
+            'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW', 'WW',
+            'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW', 'WWW',
+            'WWWW', 'WWWW', 'WWWW', 'WWWW', 'WWWW', 'WWWW', 'WWWW', 'WWWW', 'WWWW', 'WWWW',
+            'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW', 'WWWWW',
+            'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW', 'WWWWWW',
+            'WWWWWWW', 'WWWWWWWW', 'WWWWWWWWW', 'WWWWWWWWWW',
+            
+            // L's - more frequent
+            'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L',
+            'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL', 'LL',
+            'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL', 'LLL',
+            'LLLL', 'LLLL', 'LLLL', 'LLLL', 'LLLL', 'LLLL', 'LLLL', 'LLLL', 'LLLL', 'LLLL',
+            'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL', 'LLLLL',
+            'LLLLLL', 'LLLLLLL', 'LLLLLLLL', 'LLLLLLLLL', 'LLLLLLLLLL',
+            
+            // LETS GOOO variations
             'LETS GOOO', 'LETS GOOOOO', 'LETS GOOOOOO', 'LETS GOOOOOOO', 'LETS GOOOOOOOO',
-            'L', 'LL', 'LLL', 'LLLL', 'LLLLL', 'LLLLLL', 'LLLLLLL', 'LLLLLLLL', 'LLLLLLLLL', 'LLLLLLLLLL',
+            
+            // Other reactions
             'LMAO', 'LMAOO', 'LMAOOO', 'LMAOOOO', 'LMAOOOOO',
             'LOL', 'LOOL', 'LOOOL', 'LOOOOL', 'LOOOOOL',
             'POG', 'POGGERS', 'POGGIES', 'POGCHAMP', 'POGGERS',
@@ -396,8 +423,8 @@ class TwitchChatSimulator {
 
         // Calculate viewer count based on speed
         // Faster speed = more viewers
-        const minViewers = 10;
-        const maxViewers = 2000;
+        const minViewers = 5;
+        const maxViewers = 2400;
         
         // Map speed to viewer count (25ms = max viewers, 3000ms = min viewers)
         const speedRange = 3000 - 25; // 2975ms range
